@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* globals.css */
+@font-face {
+  font-family: 'FlechaBronze';
+  src: url('/public/font/flecha-bronzea-typeface-1768462228-0/FlechaBronzeaL-Black.otf') format('truetype');
+  font-weight: 900; /* Black */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FlechaBronze';
+  src: url('/public//font/flecha-bronzea-typeface-1768462228-0/FlechaBronzeaL-Regular.otf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FlechaBronze';
+  src: url('/public/font/flecha-bronzea-typeface-1768462228-0/FlechaBronzeaL-Italic.otf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: italic;
+}
+
+/* Tambahkan aturan @font-face untuk variasi lain jika diperlukan */

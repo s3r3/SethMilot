@@ -1,0 +1,218 @@
+import Image from "next/image";
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-[#F2E8DF] flex flex-col font-sans text-[#1a1a1a]">
+      {/* Navigation Bar */}
+      <nav className="flex items-center justify-between px-8 py-6 border-b border-black/10">
+        <div className="flex items-center space-x-2 cursor-pointer group">
+          <div className="flex flex-col space-y-1">
+            <span className="w-6 h-px bg-black"></span>
+            <span className="w-6 h-px bg-black"></span>
+          </div>
+          <span className="text-xs tracking-widest uppercase font-medium">
+            Menu
+          </span>
+        </div>
+
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <h1 className="text-2xl md:text-3xl font-bold tracking-[0.2em] uppercase">
+            Seth Milot
+          </h1>
+        </div>
+
+        <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-2 cursor-pointer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <span className="hidden md:inline text-xs tracking-widest uppercase font-medium">
+              Search
+            </span>
+          </div>
+          <button className="hover:opacity-60 transition-opacity">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </button>
+          <button className="hover:opacity-60 transition-opacity relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Main Content / Hero Section */}
+      <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+        {/* Large Watermark 'SM' in background */}
+        <div className="absolute select-none pointer-events-none opacity-[0.04] transition-opacity">
+          <span className="text-[40rem] font-serif leading-none italic">
+            sm
+          </span>
+        </div>
+
+        {/* Foreground Content */}
+        <div className="relative z-10 text-center px-4">
+          <h2 className="text-6xl md:text-9xl font-serif italic mb-4 tracking-tight">
+            Emblem{" "}
+            <span className="text-4xl md:text-6xl not-italic font-light lowercase">
+              of
+            </span>{" "}
+            Prestige
+          </h2>
+          <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase font-medium text-black/70">
+            Dedicated to Artisanship & Timeless Allure
+          </p>
+        </div>
+      </main>
+
+      {/* Product Collection Section */}
+      <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center py-20">
+        {/* Background Decorative Shapes (The Curved Effect) */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {/* Grey Rectangle behind */}
+          <div className="absolute w-[120%] h-[120%] bg-[#A8A39D] rotate-[-15deg] translate-y-[-10%]"></div>
+
+          {/* The White/Cream Curved Canvas */}
+          <div
+            className="relative w-[90%] h-[80vh] bg-[#F2E8DF] overflow-hidden"
+            style={{
+              clipPath: "polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)", // Simulasi kemiringan
+              borderRadius: "40% 5% 40% 5% / 10% 10% 10% 10%", // Memberikan efek lengkung halus
+            }}
+          ></div>
+        </div>
+
+        {/* Foreground Content */}
+        <div className="relative z-20 flex flex-col items-center justify-center">
+          {/* Product Image */}
+          <div className="relative w-72 md:w-125 transition-transform duration-700 hover:scale-105">
+            <Image
+              src="/photo/bag.png"
+              alt="Leather Bag"
+              className="w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.3)]"
+              width={500} // Lebar gambar dalam piksel
+              height={300} // Tinggi gambar dalam piksel
+            />
+
+            {/* Text Overlay on Bag */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+              <h3 className="text-5xl md:text-8xl font-serif font-bold uppercase tracking-widest drop-shadow-lg">
+                Seth Milot
+              </h3>
+
+              {/* Call to Action Button */}
+              <button className="mt-4 px-8 py-2 border border-white/60 rounded-full text-[10px] tracking-[0.2em] uppercase backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300">
+                Discover Collection
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Decorative Bar (Grey line at corner) */}
+        <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-[#A8A39D] -rotate-12 translate-x-20 translate-y-10"></div>
+      </section>
+
+      {/* Bespoke Brunch Section */}
+      <section className="bg-white py-24 px-6 md:px-20 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <div className="relative flex items-center justify-center w-full">
+            {/* Left Vertical Text */}
+            <div className="absolute left-0 z-10 hidden lg:block">
+              <h2 className="text-8xl md:text-[10rem] font-serif leading-none tracking-tighter text-black">
+                Bespoke
+              </h2>
+            </div>
+
+            {/* Center Image with Curved Top */}
+            <div className="relative w-full max-w-2xl z-0">
+              <div
+                className="w-full h-125 md:h-175 overflow-hidden bg-gray-100"
+                style={{
+                  borderRadius: "50% 50% 0 0 / 15% 15% 0 0", // Efek lengkungan di bagian atas gambar
+                }}
+              >
+                <Image
+                  src="/photo/woman1.png"
+                  alt="Bespoke Brunch Collection"
+                  className="w-full h-full object-cover"
+                  width={500} // Lebar gambar dalam piksel
+                  height={300} // Tinggi gambar dalam piksel
+                />
+              </div>
+
+              {/* Mobile & Tablet Text (Visible when vertical text is too big) */}
+              <div className="lg:hidden text-center mt-8">
+                <h2 className="text-6xl font-serif mb-2">Bespoke</h2>
+                <h2 className="text-6xl font-serif">Brunch</h2>
+              </div>
+            </div>
+
+            {/* Right Vertical Text */}
+            <div className="absolute right-0 z-10 hidden lg:block">
+              <h2
+                className="text-8xl md:text-[10rem] font-serif leading-none tracking-tighter text-black rotate-180"
+                style={{ writingMode: "vertical-rl" }}
+              >
+                Brunch
+              </h2>
+            </div>
+          </div>
+
+          {/* Bottom Content: Description & CTA */}
+          <div className="mt-12 max-w-lg text-center">
+            <p className="text-[10px] md:text-xs leading-relaxed tracking-widest text-gray-600 uppercase mb-8">
+              Lorem ipsum dolor sit amet consectetur. Porttitor turpis nulla
+              iaculis eget. Nulla id habitasse neque vel dolor id ipsum dui.
+              Nulla mi condimentum nisl vitae nisi. Hendrerit molestie amet
+              tellus sit.
+            </p>
+
+            <button className="group relative px-12 py-3 border border-black/20 rounded-full overflow-hidden transition-all duration-300 hover:border-black">
+              <span className="relative z-10 text-[10px] tracking-[0.2em] uppercase font-medium">
+                Learn More
+              </span>
+              <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+              <span className="absolute inset-0 z-20 flex items-center justify-center text-white text-[10px] tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Learn More
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
