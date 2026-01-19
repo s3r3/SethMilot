@@ -1,4 +1,10 @@
 import Image from "next/image";
+import ProductGallery from "./productGallery";
+import PreOrderSection from "./preOrderSection";
+import EditorialGrid from "./EditorialGrid";
+import MilotCouture from "./MilotCouture";
+import CitationSection from "./cititation";
+import Footer from "./footer";
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#F2E8DF] flex flex-col font-sans text-[#1a1a1a]">
@@ -162,15 +168,15 @@ export default function Home() {
               <div
                 className="w-full h-125 md:h-175 overflow-hidden bg-gray-100"
                 style={{
-                  borderRadius: "50% 50% 0 0 / 15% 15% 0 0", // Efek lengkungan di bagian atas gambar
+                  borderRadius: "50% 50% 0 0 / 15% 15% 0 0", 
                 }}
               >
                 <Image
                   src="/photo/woman1.png"
                   alt="Bespoke Brunch Collection"
                   className="w-full h-full object-cover"
-                  width={500} // Lebar gambar dalam piksel
-                  height={300} // Tinggi gambar dalam piksel
+                  width={500} 
+                  height={300} 
                 />
               </div>
 
@@ -212,6 +218,22 @@ export default function Home() {
             </button>
           </div>
         </div>
+      </section>
+      <section>
+        <ProductGallery />
+      </section>
+      <section>
+        <PreOrderSection />
+      </section>
+      <section>
+        <EditorialGrid />
+      </section>
+      <section>
+        <MilotCouture />
+      </section>
+      <section>
+        <CitationSection />
+        <Footer />
       </section>
     </div>
   );
