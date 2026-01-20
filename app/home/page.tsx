@@ -1,3 +1,7 @@
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ProductGallery from "./productGallery";
 import PreOrderSection from "./preOrderSection";
@@ -6,8 +10,95 @@ import MilotCouture from "./MilotCouture";
 import CitationSection from "./cititation";
 import Footer from "./footer";
 export default function Home() {
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      // 1. Hero Animation (Load-in)
+      const tlHero = gsap.timeline();
+      tlHero
+        .from(".hero-title", {
+          y: 100,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power4.out",
+          skewY: 7,
+        })
+        .from(
+          ".hero-subtitle",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+          },
+          "-=0.8",
+        )
+        .from(
+          ".sm-watermark",
+          {
+            opacity: 0,
+            scale: 0.8,
+            duration: 2,
+            ease: "power2.out",
+          },
+          0,
+        );
+
+      // 2. Parallax Effect untuk Product Collection Section
+      gsap.to(".bag-image", {
+        scrollTrigger: {
+          trigger: ".collection-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+        y: -100,
+      });
+
+      // 3. Bespoke Section Reveal
+      gsap.from(".bespoke-text", {
+        scrollTrigger: {
+          trigger: ".bespoke-section",
+          start: "top 80%",
+        },
+        x: -100,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+      });
+
+      gsap.from(".brunch-text", {
+        scrollTrigger: {
+          trigger: ".bespoke-section",
+          start: "top 80%",
+        },
+        x: 100,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+      });
+
+      // 4. Image Reveal Animation (Efek tirai)
+      gsap.from(".bespoke-img-container", {
+        scrollTrigger: {
+          trigger: ".bespoke-section",
+          start: "top 60%",
+        },
+        clipPath: "inset(100% 0% 0% 0%)",
+        duration: 1.8,
+        ease: "power4.inOut",
+      });
+    }, mainRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#F2E8DF] flex flex-col font-sans text-[#1a1a1a]">
+    <div
+      ref={mainRef}
+      className="min-h-screen bg-[#F2E8DF] flex flex-col font-sans text-[#1a1a1a]"
+    >
       {/* Navigation Bar */}
       <nav className="flex items-center justify-between px-8 py-6 border-b border-black/10">
         <div className="flex items-center space-x-2 cursor-pointer group">
@@ -84,7 +175,7 @@ export default function Home() {
       {/* Main Content / Hero Section */}
       <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
         {/* Large Watermark 'SM' in background */}
-        <div className="absolute select-none pointer-events-none opacity-[0.04] transition-opacity">
+        <div className="sm-watermark absolute select-none pointer-events-none opacity-[0.04] transition-opacity">
           <span className="text-[40rem] font-serif leading-none italic">
             sm
           </span>
@@ -92,21 +183,21 @@ export default function Home() {
 
         {/* Foreground Content */}
         <div className="relative z-10 text-center px-4">
-          <h2 className="text-6xl md:text-9xl font-serif italic mb-4 tracking-tight">
+          <h2 className="hero-title text-6xl md:text-9xl font-serif italic mb-4 tracking-tight">
             Emblem{" "}
             <span className="text-4xl md:text-6xl not-italic font-light lowercase">
               of
             </span>{" "}
             Prestige
           </h2>
-          <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase font-medium text-black/70">
+          <p className="hero-subtitle text-[10px] md:text-xs tracking-[0.3em] uppercase font-medium text-black/70">
             Dedicated to Artisanship & Timeless Allure
           </p>
         </div>
       </main>
 
       {/* Product Collection Section */}
-      <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center py-20">
+      <section className="collection-section relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center py-20">
         {/* Background Decorative Shapes (The Curved Effect) */}
         <div className="absolute inset-0 flex items-center justify-center">
           {/* Grey Rectangle behind */}
@@ -123,7 +214,7 @@ export default function Home() {
         </div>
 
         {/* Foreground Content */}
-        <div className="relative z-20 flex flex-col items-center justify-center">
+        <div className="bag-image relative z-20 flex flex-col items-center justify-center">
           {/* Product Image */}
           <div className="relative w-72 md:w-125 transition-transform duration-700 hover:scale-105">
             <Image
@@ -153,30 +244,30 @@ export default function Home() {
       </section>
 
       {/* Bespoke Brunch Section */}
-      <section className="bg-white py-24 px-6 md:px-20 relative overflow-hidden">
+      <section className="bespoke-section bg-white py-24 px-6 md:px-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           <div className="relative flex items-center justify-center w-full">
             {/* Left Vertical Text */}
-            <div className="absolute left-0 z-10 hidden lg:block">
+            <div className="bespoke-text absolute left-0 z-10 hidden lg:block">
               <h2 className="text-8xl md:text-[10rem] font-serif leading-none tracking-tighter text-black">
                 Bespoke
               </h2>
             </div>
 
             {/* Center Image with Curved Top */}
-            <div className="relative w-full max-w-2xl z-0">
+            <div className="bespoke-img-container relative w-full max-w-2xl z-0">
               <div
                 className="w-full h-125 md:h-175 overflow-hidden bg-gray-100"
                 style={{
-                  borderRadius: "50% 50% 0 0 / 15% 15% 0 0", 
+                  borderRadius: "50% 50% 0 0 / 15% 15% 0 0",
                 }}
               >
                 <Image
                   src="/photo/woman1.png"
                   alt="Bespoke Brunch Collection"
                   className="w-full h-full object-cover"
-                  width={500} 
-                  height={300} 
+                  width={500}
+                  height={300}
                 />
               </div>
 
@@ -188,7 +279,7 @@ export default function Home() {
             </div>
 
             {/* Right Vertical Text */}
-            <div className="absolute right-0 z-10 hidden lg:block">
+            <div className="brunch-text absolute right-0 z-10 hidden lg:block">
               <h2
                 className="text-8xl md:text-[10rem] font-serif leading-none tracking-tighter text-black rotate-180"
                 style={{ writingMode: "vertical-rl" }}
