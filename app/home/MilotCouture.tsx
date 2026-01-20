@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+
 const MilotCouture: React.FC = () => {
   const collections = [
     {
@@ -23,9 +24,9 @@ const MilotCouture: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white overflow-hidden ">
+    <section className="bg-white overflow-hidden">
       {/* Title Section */}
-      <div className="mb-12 py-24 px-8 md:px-16 ">
+      <div className="mb-12 py-24 px-8 md:px-16">
         <h2 className="text-6xl md:text-7xl font-light tracking-tight">
           Milot{" "}
           <span className="font-serif italic text-7xl md:text-8xl">
@@ -52,8 +53,8 @@ const MilotCouture: React.FC = () => {
                 src={item.image}
                 alt={item.name}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                width={500} // Lebar gambar dalam piksel
-                height={300} // Tinggi gambar dalam piksel
+                width={500}
+                height={300}
               />
               {/* Subtle Overlay on Hover */}
               <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

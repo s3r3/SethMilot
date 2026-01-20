@@ -28,7 +28,7 @@ const PreOrderSection: React.FC = () => {
                   <Image
                     src={product.image}
                     alt={product.alt}
-                    /* fill dan object-contain memastikan gambar muat sempurna di dalam kotak tanpa mengubah ukurannya secara paksa */
+                   
                     fill
                     className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"

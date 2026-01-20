@@ -30,14 +30,13 @@ const ProductGallery = () => {
             grabCursor={true}
             centeredSlides={true}
             loop={false}
-            speed={2000} // Transisi meluncur lambat agar elegan
+            speed={2000}
             autoplay={{
-              delay: 1, // Delay 1ms + speed besar = efek continuous sliding
+              delay: 1,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true, // Berhenti saat kursor di atas (opsional)
+              pauseOnMouseEnter: true,
             }}
-            // SlidesPerView 'auto' membutuhkan lebar slide yang didefinisikan di CSS/Tailwind
-            slidesPerView={"auto"} 
+            slidesPerView={"auto"}
             coverflowEffect={{
               rotate: 5,
               stretch: 0,
@@ -45,13 +44,11 @@ const ProductGallery = () => {
               modifier: 2.5,
               slideShadows: false,
             }}
-            // Menonaktifkan freeMode agar tetap snap ke tengah
             className="mySwiper overflow-visible!"
           >
             {images.map((src, index) => (
               <SwiperSlide
                 key={index}
-                // Slide harus memiliki width tetap jika menggunakan slidesPerView: "auto"
                 className="w-70! sm:w-87.5! md:w-112.5! flex items-center justify-center"
               >
                 {/* Image Container with Hover Zoom */}
@@ -67,10 +64,10 @@ const ProductGallery = () => {
                     height={800}
                     priority={index < 3}
                   />
-                  
+
                   {/* Overlay halus untuk kesan premium */}
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                  
+
                   {/* Border dalam tipis */}
                   <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-black/10"></div>
                 </div>

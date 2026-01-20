@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
+
 const EditorialGrid: React.FC = () => {
   return (
-    <section className="bg-white ">
+    <section className="bg-white">
       {/* Main Container with one rounded corner */}
       <div className="bg-[#F2E8DF] rounded-tr-[150px] md:rounded-tr-[300px] p-10 md:p-24 relative overflow-hidden min-h-250">
         {/* Decorative Thin Lines */}
@@ -26,47 +27,47 @@ const EditorialGrid: React.FC = () => {
 
         {/* Floating Images Grid */}
         <div className="relative z-10 grid grid-cols-12 gap-4">
-          {/* 1. Large Top Left Image */}
+          {/* Large Top Left Image */}
           <div className="col-span-12 md:col-span-5 mb-12 transform hover:scale-[1.02] transition-transform duration-500">
             <Image
               src="/photo/woman1.jpg"
               alt="Portrait"
               className="w-full h-auto object-cover shadow-xl"
-              width={500} // Lebar gambar dalam piksel
-              height={300} // Tinggi gambar dalam piksel
+              width={500}
+              height={300}
             />
           </div>
 
-          {/* 2. Middle Right Image (Product/Branding) */}
+          {/* Middle Right Image (Product/Branding) */}
           <div className="col-span-12 md:col-start-7 md:col-span-5 mt-20 md:mt-40 transform hover:scale-[1.02] transition-transform duration-500">
             <Image
               src="/photo/editorial.png"
               alt="Portrait"
               className="w-full h-auto object-cover shadow-xl"
-              width={500} // Lebar gambar dalam piksel
-              height={300} // Tinggi gambar dalam piksel
+              width={500}
+              height={300}
             />
           </div>
 
-          {/* 3. Center Small Image (Couple/Lifestyle) */}
+          {/* Center Small Image (Couple/Lifestyle) */}
           <div className="col-span-8 col-start-3 md:col-start-5 md:col-span-3 -mt-10 md:-mt-32 transform hover:rotate-2 hover:scale-105 transition-transform duration-500">
             <Image
               src="/photo/editorial1.png"
               alt="Portrait"
               className="w-full h-auto object-cover shadow-xl"
-              width={500} // Lebar gambar dalam piksel
-              height={300} // Tinggi gambar dalam piksel
+              width={500}
+              height={300}
             />
           </div>
 
-          {/* 4. Bottom Left Image (Product Detail) */}
+          {/* Bottom Left Image (Product Detail) */}
           <div className="col-span-10 md:col-span-4 mt-12 md:mt-20 transform hover:scale-[1.02] transition-transform duration-500">
             <Image
               src="/photo/editorial3.jpg"
               alt="Portrait"
               className="w-full h-auto object-cover shadow-xl"
-              width={500} // Lebar gambar dalam piksel
-              height={300} // Tinggi gambar dalam piksel
+              width={500}
+              height={300}
             />
           </div>
         </div>
