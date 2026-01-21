@@ -9,7 +9,14 @@ import EditorialGrid from "./EditorialGrid";
 import MilotCouture from "./MilotCouture";
 import CitationSection from "./cititation";
 import Footer from "./footer";
+import { useState } from "react";
+import BurgerMenu from "../component/burger-menu";
+import SearchOverlay from "../component/search";
+
+
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const mainRef = useRef(null);
 
   useEffect(() => {
@@ -101,7 +108,7 @@ export default function Home() {
     >
       {/* Navigation Bar */}
       <nav className="flex items-center justify-between px-8 py-6 border-b border-black/10">
-        <div className="flex items-center space-x-2 cursor-pointer group">
+        <div className="flex items-center space-x-2 cursor-pointer group" onClick={()=>setIsMenuOpen(true)}>
           <div className="flex flex-col space-y-1">
             <span className="w-6 h-px bg-black"></span>
             <span className="w-6 h-px bg-black"></span>
@@ -110,6 +117,7 @@ export default function Home() {
             Menu
           </span>
         </div>
+        <BurgerMenu isOpen={isMenuOpen} onClose={()=>setIsMenuOpen(false)}/>
 
         <div className="absolute left-1/2 -translate-x-1/2">
           <h1 className="text-2xl md:text-3xl font-bold tracking-[0.2em] uppercase">
@@ -118,7 +126,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center space-x-6">
-          <div className="flex items-center space-x-2 cursor-pointer">
+          <div className="flex items-center space-x-2 cursor-pointer" onClick={()=>setIsSearchOpen(true)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -137,6 +145,7 @@ export default function Home() {
               Search
             </span>
           </div>
+          <SearchOverlay isOpen={isSearchOpen} onClose={()=>setIsSearchOpen(false)}/>
           <button className="hover:opacity-60 transition-opacity">
             <svg
               xmlns="http://www.w3.org/2000/svg"
