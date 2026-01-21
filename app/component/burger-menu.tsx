@@ -14,7 +14,9 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
       x: "-100%",
       transition: {
         duration: 0.7,
-        ease: [0.76, 0, 0.24, 1],
+        // cast easing array to any to satisfy framer-motion Typescript types
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ease: [0.76, 0, 0.24, 1] as unknown as any,
         when: "afterChildren",
       },
     },
@@ -22,7 +24,9 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
       x: 0,
       transition: {
         duration: 0.7,
-        ease: [0.76, 0, 0.24, 1],
+        // cast easing array to any to satisfy framer-motion Typescript types
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ease: [0.76, 0, 0.24, 1] as unknown as any,
         when: "beforeChildren",
         staggerChildren: 0.08,
         delayChildren: 0.3,
@@ -34,7 +38,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
     closed: {
       y: 80,
       opacity: 0,
-      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] as unknown as any },
     },
     open: (i: number) => ({
       y: 0,
@@ -42,7 +47,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
       transition: {
         duration: 0.6,
         delay: 0.1 + i * 0.06,
-        ease: [0.33, 1, 0.68, 1],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ease: [0.33, 1, 0.68, 1] as unknown as any,
       },
     }),
   };
@@ -122,8 +128,14 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
                   <li className="hover:text-[#C2A391] cursor-pointer">
                     Cross Body
                   </li>
-                  <li className="hover:text-[#c2a391] cursor-pointer"> Mini Top Handle</li>
-                  <li className="hover:text-[#c2a391] cursor-pointer" > Pouch</li>
+                  <li className="hover:text-[#c2a391] cursor-pointer">
+                    {" "}
+                    Mini Top Handle
+                  </li>
+                  <li className="hover:text-[#c2a391] cursor-pointer">
+                    {" "}
+                    Pouch
+                  </li>
                 </ul>
               </div>
             </div>
