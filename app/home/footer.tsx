@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#F2E8DF]">
+    <footer className="">
       <motion.div
         initial="hidden"
         whileInView="visible"

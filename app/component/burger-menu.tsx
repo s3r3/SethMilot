@@ -2,6 +2,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type BurgerMenuProps = {
   isOpen: boolean;
@@ -9,6 +10,8 @@ type BurgerMenuProps = {
 };
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
+  const router = useRouter();
+
   const menuVariants = {
     closed: {
       x: "-100%",
@@ -82,18 +85,37 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
             </button>
 
             <nav className="flex flex-col space-y-4">
-              {navLinks.map((link, i) => (
-                <div key={link} className="overflow-hidden">
-                  <motion.a
-                    custom={i}
-                    variants={linkVariants}
-                    href={`#${link.toLowerCase()}`}
-                    className="text-4xl md:text-6xl font-serif block hover:italic transition-all"
-                  >
-                    {link}
-                  </motion.a>
-                </div>
-              ))}
+              {navLinks.map((link, i) => {
+                const key = link.toLowerCase();
+                const route =
+                  key === "heritage"
+                    ? "/heritage"
+                    : key === "home"
+                      ? "/home"
+                      : `#${key}`;
+                const isRoute = route.startsWith("/");
+                return (
+                  <div key={link} className="overflow-hidden">
+                    <motion.a
+                      custom={i}
+                      variants={linkVariants}
+                      href={isRoute ? undefined : route}
+                      onClick={
+                        isRoute
+                          ? (e) => {
+                              e.preventDefault();
+                              router.push(route);
+                              onClose();
+                            }
+                          : undefined
+                      }
+                      className="text-4xl md:text-6xl font-serif block hover:italic transition-all cursor-pointer"
+                    >
+                      {link}
+                    </motion.a>
+                  </div>
+                );
+              })}
             </nav>
 
             <div className="flex gap-4 border-t border-white/10 pt-8">
