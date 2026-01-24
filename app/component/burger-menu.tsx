@@ -92,7 +92,9 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
                     ? "/heritage"
                     : key === "home"
                       ? "/home"
-                      : `#${key}`;
+                      : key === "sustainability"
+                        ? "/sustainability"
+                        : `#${key}`;
                 const isRoute = route.startsWith("/");
                 return (
                   <div key={link} className="overflow-hidden">
