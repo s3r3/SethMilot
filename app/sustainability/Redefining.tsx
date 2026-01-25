@@ -71,7 +71,7 @@ const RedefiningValues: React.FC = () => {
           <div className="absolute inset-2 border border-[#d4c5b3] rounded-t-[190px] pointer-events-none" />
           
           <div className="text-reveal text-center relative">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl leading-[0.9] font-serif tracking-tight text-[#1a1a1a]">
+            <h2 className="text-3xl md:text-5xl lg:text-1xl leading-[0.9] font-serif tracking-tight text-[#1a1a1a]">
               REDEFINING <br />
               <span className="font-light italic">SUSTAINABLE</span> <br />
               <span className="text-2xl md:text-4xl italic block mt-2">VALUES</span>
